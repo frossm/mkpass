@@ -69,7 +69,6 @@ public class Main {
 					System.out.println("Use -h switch for help information");
 					System.exit(0);
 				}
-				System.out.println("opt len: " + pwLen);
 				break;
 
 			case 'p':
@@ -130,7 +129,7 @@ public class Main {
 			System.out.println("Symbols to use in password:");
 			for (int j = 0; j < pwSymbols.length; j++)
 				System.out.print(pwSymbols[j] + " ");
-			System.out.println("\n\nPassword Length=" + pwLen);
+			System.out.println("\n\nPassword Length: " + pwLen);
 			System.out.println("Use Special Characters: " + useSpecialChars + "\n");
 			System.out.println("Ruler:   1         2         3         4         5         6         7");
 			System.out.println("1234567890123456789012345678901234567890123456789012345678901234567890");
