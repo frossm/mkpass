@@ -20,6 +20,7 @@ By default, pwgen will create a 30 character password and will use special chara
 
 ## Feedback
 If you have ideas or issues, please let me know.  There is quite a bit more error checking that could probably be added.
+
 pwgen at fross dot org
 
 ## License
