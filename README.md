@@ -20,7 +20,7 @@ By default, pwgen will create a 30 character password and will use special chara
 |-D|Debug mode.  Mostly used by me to show extra debugging information|
 
 ## Linux Note
-Had an issue with my Ubuntu notebook where SecureRandom would hang.  See this [Oracle Java Link](https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmrand.html).  The detail is below.
+I had an issue with my Ubuntu notebook where SecureRandom would hang.  Apparently this is a known issue.  See this [Oracle Java Link](https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmrand.html).  The detail from that link is below:
 
 **Avoiding JVM Delays Caused by Random Number Generation**
 The library used for random number generation in Sun's JVM relies on /dev/random by default for UNIX platforms. This can potentially block the WebLogic SIP Server process because on some operating systems /dev/random waits for a certain amount of "noise" to be generated on the host machine before returning a result. Although /dev/random is more secure, BEA recommends using /dev/urandom if the default JVM configuration delays WebLogic SIP Server startup.
@@ -40,7 +40,7 @@ to read:
 
     securerandom.source=file:/dev/urandom
 
-Alternatively, you can add the following java flag:
+Alternatively, you can add the following java flag during execution:
 
     -Djava.security.egd=file:/dev/./urandom
 
