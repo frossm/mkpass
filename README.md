@@ -1,4 +1,5 @@
 
+
 ## pwgen
 
 pwgen is a simple command line utility to generate secure random passwords.  You can easily redirect these to a clipboard or copy and paste when needed.
@@ -17,6 +18,32 @@ By default, pwgen will create a 30 character password and will use special chara
 |-p|Use a plain password without special characters|
 |-? or -h| Show Usage information|
 |-D|Debug mode.  Mostly used by me to show extra debugging information|
+
+## Linux Note
+Had an issue with my Ubuntu notebook where SecureRandom would hang.  See this [Oracle Java Link](https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmrand.html).  The detail is below.
+
+**Avoiding JVM Delays Caused by Random Number Generation**
+The library used for random number generation in Sun's JVM relies on /dev/random by default for UNIX platforms. This can potentially block the WebLogic SIP Server process because on some operating systems /dev/random waits for a certain amount of "noise" to be generated on the host machine before returning a result. Although /dev/random is more secure, BEA recommends using /dev/urandom if the default JVM configuration delays WebLogic SIP Server startup.
+
+To determine if your operating system exhibits this behavior, try displaying a portion of the file from a shell prompt:
+
+    head -n 1 /dev/random
+
+If the command returns immediately, you can use /dev/random as the default generator for SUN's JVM. If the command does not return immediately, use these steps to configure the JVM to use /dev/urandom:
+
+Open the $JAVA_HOME/jre/lib/security/java.security file in a text editor.
+Change the line:
+
+    securerandom.source=file:/dev/random
+
+to read:
+
+    securerandom.source=file:/dev/urandom
+
+Alternatively, you can add the following java flag:
+
+    -Djava.security.egd=file:/dev/./urandom
+
 
 ## Feedback
 If you have ideas or issues, please let me know.  There is quite a bit more error checking that could probably be added.
