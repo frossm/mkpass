@@ -29,6 +29,7 @@ public class Main {
 	public static String VERSION;
 	public static final String PROPERTIES_FILE = "app.properties";
 	private static boolean debugMode = false;
+	private static boolean showSymbols = false;
 
 	/**
 	 * Main(): Program entry point
@@ -54,7 +55,7 @@ public class Main {
 		}
 
 		// Process Command Line Options and set flags where needed
-		Getopt optG = new Getopt("PWGen", args, "Dl:ph?");
+		Getopt optG = new Getopt("PWGen", args, "Dl:psh?");
 		while ((optionEntry = optG.getopt()) != -1) {
 			switch (optionEntry) {
 			case 'D':
@@ -75,11 +76,17 @@ public class Main {
 				useSpecialChars = false;
 				break;
 
+			case 's':
+				showSymbols = true;
+				break;
+
 			case '?': // Help
 			case 'h':
 				System.out.println("Usage:  pwgen [-l <length>] [-p]");
 				System.out.println("  -l   Length. Default length is 30 characters");
 				System.out.println("  -p   Plain.  Do not include special characters");
+				System.out.println("  -s   Show.   Display the symbols included in the password");
+				System.out.println("  -D   Debug.  Used by dev to debug program");
 				System.exit(0);
 				break;
 
@@ -94,6 +101,7 @@ public class Main {
 		// Generate the password
 		String pw = generatePW(pwLen, useSpecialChars);
 
+		// Display the password and exit
 		System.out.println(pw);
 
 	}
@@ -126,13 +134,20 @@ public class Main {
 
 		// Display debugging information before password generation
 		if (debugMode == true) {
-			System.out.println("Symbols to use in password:");
-			for (int j = 0; j < pwSymbols.length; j++)
-				System.out.print(pwSymbols[j] + " ");
 			System.out.println("\n\nPassword Length: " + pwLen);
 			System.out.println("Use Special Characters: " + useSpecialChars + "\n");
 			System.out.println("Ruler:   1         2         3         4         5         6         7");
 			System.out.println("1234567890123456789012345678901234567890123456789012345678901234567890");
+		}
+
+		if (Main.showSymbols == true) {
+			System.out.print("These "+pwSymbols.length+" symbols used in this password generation:");
+			for (int j = 0; j < pwSymbols.length; j++) {
+				if (j % 10 == 0)
+					System.out.println();
+				System.out.print(pwSymbols[j] + " ");
+			}
+			System.out.println("\n");
 		}
 
 		try {
