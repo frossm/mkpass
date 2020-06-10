@@ -27,6 +27,7 @@ import gnu.getopt.Getopt;
 public class Main {
 	// Class Constants
 	public static String VERSION;
+	public static String COPYRIGHT;
 	public static final String PROPERTIES_FILE = "app.properties";
 	private static boolean debugMode = false;
 	private static boolean showSymbols = false;
@@ -49,6 +50,9 @@ public class Main {
 			Properties prop = new Properties();
 			prop.load(iStream);
 			VERSION = prop.getProperty("Application.version");
+			COPYRIGHT = "Copyright " + prop.getProperty("Application.inceptionYear") + "-" + java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)
+					+ " by Michael Fross.  All rights reserved";
+
 		} catch (IOException ex) {
 			System.out.println("Unable to read property file '" + PROPERTIES_FILE + "'");
 			System.exit(1);
@@ -82,6 +86,8 @@ public class Main {
 
 			case '?': // Help
 			case 'h':
+				System.out.println("PWGEN: A Simple Password Generator");
+				System.out.println(COPYRIGHT+"\n");
 				System.out.println("Usage:  pwgen [-l <length>] [-p]");
 				System.out.println("  -l   Length. Default length is 30 characters");
 				System.out.println("  -p   Plain.  Do not include special characters");
@@ -141,7 +147,7 @@ public class Main {
 		}
 
 		if (Main.showSymbols == true) {
-			System.out.print("These "+pwSymbols.length+" symbols used in this password generation:");
+			System.out.print("These " + pwSymbols.length + " symbols used in this password generation:");
 			for (int j = 0; j < pwSymbols.length; j++) {
 				if (j % 10 == 0)
 					System.out.println();
