@@ -94,6 +94,7 @@ public class Main {
 				System.out.println("  -p   Plain.  Do not include special characters");
 				System.out.println("  -s   Show.   Display the symbols included in the password");
 				System.out.println("  -D   Debug.  Used by dev to debug program");
+				System.out.println("\nNote: If pwgen seems to hang, install 'rng-tools'\n");
 				System.exit(0);
 				break;
 
