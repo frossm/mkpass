@@ -1,0 +1,24 @@
+name: fpwgen
+version: '2020.06.07'
+summary: Simple secure password generator
+description: |
+  PWGEN is a command line password generator.  There are several options
+  that allow control of the password length as well as an option to
+  include special symbols.  Running without options defaults to producing
+  a 30 character password with special characters.
+  Please let me konw if you have suggestions.
+
+grade: stable # must be 'stable' to release into candidate/stable channels
+confinement: strict  # use 'strict' once you have the right plugs and slots
+base: core18
+
+apps:
+  fpwgen:
+    command: bin/java -Djava.security.egd=file:/dev/./urandom -Djava.util.prefs.userRoot="$SNAP_USER_DATA" -jar $SNAP/jar/pwgen.jar
+
+parts:
+  fpwgen:
+    plugin: maven
+    source: https://github.com/frossm/pwgen.git
+    source-tag: master
+    source-type: git

@@ -87,6 +87,7 @@ public class Main {
 			case '?': // Help
 			case 'h':
 				System.out.println("PWGEN: A Simple Password Generator");
+				System.out.println("Version " + VERSION);
 				System.out.println(COPYRIGHT+"\n");
 				System.out.println("Usage:  pwgen [-l <length>] [-p]");
 				System.out.println("  -l   Length. Default length is 30 characters");
