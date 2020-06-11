@@ -23,9 +23,7 @@ By default, pwgen will create a 30 character password and will use special chara
 ## Linux Note
 I had an issue with my Ubuntu notebook where SecureRandom would hang.  Apparently this is a known issue where /dev/random blocks until it has enough entropy to produce a secure random number.
 
-**Codes and Notes** does a much better job explaning it [here](https://www.codesandnotes.be/2018/09/18/strong-random-number-generation-hangs-on-linux-machines/).
-
-It boils down to installing "rng-tools" which will feed entropy.
+**Codes and Notes** does a much better job explaning it [here](https://www.codesandnotes.be/2018/09/18/strong-random-number-generation-hangs-on-linux-machines/). It boils down to installing "rng-tools" which will feed entropy.
 
 Additional information can be found on in the [Oracle docs.](https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmrand.html)
 
