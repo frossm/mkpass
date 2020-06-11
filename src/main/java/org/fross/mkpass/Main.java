@@ -1,5 +1,5 @@
 /*
- * pwgen: Generate Secure Passwords on the command line
+ * mkpass: Generate Secure Passwords on the command line
  * 
  * This code is directly from the Wikipedia article:
  * https://en.wikipedia.org/wiki/Random_password_generator
@@ -8,7 +8,7 @@
  * 
  */
 
-package org.fross.pwgen;
+package org.fross.mkpass;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -59,7 +59,7 @@ public class Main {
 		}
 
 		// Process Command Line Options and set flags where needed
-		Getopt optG = new Getopt("PWGen", args, "Dl:psh?");
+		Getopt optG = new Getopt("mkpass", args, "Dl:psh?");
 		while ((optionEntry = optG.getopt()) != -1) {
 			switch (optionEntry) {
 			case 'D':
@@ -86,15 +86,15 @@ public class Main {
 
 			case '?': // Help
 			case 'h':
-				System.out.println("PWGEN: A Simple Password Generator");
+				System.out.println("mkpass: A Simple Password Generator");
 				System.out.println("Version " + VERSION);
 				System.out.println(COPYRIGHT+"\n");
-				System.out.println("Usage:  pwgen [-l <length>] [-p]");
+				System.out.println("Usage:  mkpass [-l <length>] [-p]");
 				System.out.println("  -l   Length. Default length is 30 characters");
 				System.out.println("  -p   Plain.  Do not include special characters");
 				System.out.println("  -s   Show.   Display the symbols included in the password");
 				System.out.println("  -D   Debug.  Used by dev to debug program");
-				System.out.println("\nNote: If pwgen seems to hang, install 'rng-tools'\n");
+				System.out.println("\nNote: If mkpass seems to hang, install 'rng-tools'\n");
 				System.exit(0);
 				break;
 

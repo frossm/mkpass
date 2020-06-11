@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.fross</groupId>
-	<artifactId>pwgen</artifactId>
-	<version>2020.06.07</version>
+	<artifactId>mkpass</artifactId>
+	<version>2020.06.11</version>
 
-	<name>pwgen</name>
+	<name>mkpass</name>
 	<description>Command line password generator</description>
 	<url>https://fross.org</url>
 
