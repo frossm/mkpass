@@ -1,15 +1,13 @@
+## mkpass
 
-
-## pwgen
-
-pwgen is a simple command line utility to generate secure random passwords.  You can easily redirect these to a clipboard or copy and paste when needed.
+mkpass is a simple command line utility to generate secure random passwords.  You can easily redirect these to a clipboard or copy and paste when needed.
 I use a password manager and generate random passwords everytime I need one.  And while most password managers include a generator, there are times I need one outside of that.
 The code is written in java so should run on any OS that supports it.
 Lastly, the idea and core code came from a Wikipedia article.  I just took this and expanded upon it.
 [https://en.wikipedia.org/wiki/Random_password_generator](https://en.wikipedia.org/wiki/Random_password_generator)
 
 ## Defaults
-By default, pwgen will create a 30 character password and will use special characters.
+By default, mkpass will create a 30 character password and will use special characters.
 
 ## Command line Options
 |Option|Description  |
@@ -30,7 +28,7 @@ Additional information can be found on in the [Oracle docs.](https://docs.oracle
 ## Feedback
 If you have ideas or issues, please let me know.  There is quite a bit more error checking that could probably be added.
 
-pwgen at fross dot org
+mkpass at fross dot org
 
 ## License
 [The MIT License](https://opensource.org/licenses/MIT)  [https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
