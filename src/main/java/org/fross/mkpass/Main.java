@@ -30,7 +30,6 @@ public class Main {
 	public static String COPYRIGHT;
 	public static final String PROPERTIES_FILE = "app.properties";
 	private static boolean debugMode = false;
-	private static boolean showSymbols = false;
 
 	/**
 	 * Main(): Program entry point
@@ -41,6 +40,8 @@ public class Main {
 		int optionEntry = 0;
 		int pwLen = 30;
 		boolean useSpecialChars = true;
+		boolean showSymbols = false;
+		int numberToGenerate = 1;
 
 		// Process application level properties file
 		// Update properties from Maven at build time:
@@ -59,7 +60,7 @@ public class Main {
 		}
 
 		// Process Command Line Options and set flags where needed
-		Getopt optG = new Getopt("mkpass", args, "Dl:psh?");
+		Getopt optG = new Getopt("mkpass", args, "Dl:n:psh?");
 		while ((optionEntry = optG.getopt()) != -1) {
 			switch (optionEntry) {
 			case 'D':
@@ -71,6 +72,16 @@ public class Main {
 					pwLen = Integer.valueOf(optG.getOptarg());
 				} catch (NumberFormatException ex) {
 					System.out.println("ERROR: Invalid length parameter: '" + optG.getOptarg() + "'");
+					System.out.println("Use -h switch for help information");
+					System.exit(0);
+				}
+				break;
+
+			case 'n':
+				try {
+					numberToGenerate = Integer.valueOf(optG.getOptarg());
+				} catch (NumberFormatException ex) {
+					System.out.println("ERROR: Invalid number parameter: '" + optG.getOptarg() + "'");
 					System.out.println("Use -h switch for help information");
 					System.exit(0);
 				}
@@ -88,12 +99,13 @@ public class Main {
 			case 'h':
 				System.out.println("mkpass: A Simple Password Generator");
 				System.out.println("Version " + VERSION);
-				System.out.println(COPYRIGHT+"\n");
+				System.out.println(COPYRIGHT + "\n");
 				System.out.println("Usage:  mkpass [-l <length>] [-p]");
-				System.out.println("  -l   Length. Default length is 30 characters");
-				System.out.println("  -p   Plain.  Do not include special characters");
-				System.out.println("  -s   Show.   Display the symbols included in the password");
-				System.out.println("  -D   Debug.  Used by dev to debug program");
+				System.out.println("  -l [len]  Length. Set password length. Default: 30 characters");
+				System.out.println("  -p        Plain.  Do not include special characters");
+				System.out.println("  -n [num]  Number. Generate num passwords");
+				System.out.println("  -s        Show.   Display the symbols included in the password");
+				System.out.println("  -D        Debug.  Used by dev to debug program");
 				System.out.println("\nNote: If mkpass seems to hang, install 'rng-tools'\n");
 				System.exit(0);
 				break;
@@ -106,12 +118,11 @@ public class Main {
 			}
 		}
 
-		// Generate the password
-		String pw = generatePW(pwLen, useSpecialChars);
-
-		// Display the password and exit
-		System.out.println(pw);
-
+		// Generate and display the password
+		for (int i = 0; i < numberToGenerate; i++) {
+			String pw = generatePW(pwLen, useSpecialChars, showSymbols);
+			System.out.println(pw);
+		}
 	}
 
 	/**
@@ -121,7 +132,7 @@ public class Main {
 	 * @param useSpecialChars
 	 * @return
 	 */
-	public static String generatePW(int pwLen, boolean useSpecialChars) {
+	public static String generatePW(int pwLen, boolean useSpecialChars, boolean showSymbols) {
 		Random random = null;
 
 		String[] standardSymbols = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
@@ -148,7 +159,7 @@ public class Main {
 			System.out.println("1234567890123456789012345678901234567890123456789012345678901234567890");
 		}
 
-		if (Main.showSymbols == true) {
+		if (showSymbols == true) {
 			System.out.print("These " + pwSymbols.length + " symbols used in this password generation:");
 			for (int j = 0; j < pwSymbols.length; j++) {
 				if (j % 10 == 0)
