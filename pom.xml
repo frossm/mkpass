@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.fross</groupId>
 	<artifactId>mkpass</artifactId>
-	<version>2020.06.11</version>
+	<version>2020.06.23</version>
 
 	<name>mkpass</name>
 	<description>Command line password generator</description>

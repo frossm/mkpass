@@ -12,8 +12,10 @@ By default, mkpass will create a 30 character password and will use special char
 ## Command line Options
 |Option|Description  |
 |--|--|
-|-l|Length of generated password.  Default is 30|
+|-l <len>|Length of generated password.  Default is 30|
 |-p|Use a plain password without special characters|
+|-c <chars>|Use these characters instead of the default symbols.  Useful if password only allows certain characters|
+|-n <num>|Number of passwords to generate|
 |-s|Show the characters that will be used in the password generation|
 |-? or -h| Show Usage information|
 |-D|Debug mode.  Mostly used by me to show extra debugging information|

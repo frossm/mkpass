@@ -42,6 +42,7 @@ public class Main {
 		boolean useSpecialChars = true;
 		boolean showSymbols = false;
 		int numberToGenerate = 1;
+		String customSymbols = "";
 
 		// Process application level properties file
 		// Update properties from Maven at build time:
@@ -60,7 +61,7 @@ public class Main {
 		}
 
 		// Process Command Line Options and set flags where needed
-		Getopt optG = new Getopt("mkpass", args, "Dl:n:psh?");
+		Getopt optG = new Getopt("mkpass", args, "Dl:n:pshc:?");
 		while ((optionEntry = optG.getopt()) != -1) {
 			switch (optionEntry) {
 			case 'D':
@@ -95,18 +96,13 @@ public class Main {
 				showSymbols = true;
 				break;
 
+			case 'c':
+				customSymbols = optG.getOptarg();
+				break;
+
 			case '?': // Help
 			case 'h':
-				System.out.println("mkpass: A Simple Password Generator");
-				System.out.println("Version " + VERSION);
-				System.out.println(COPYRIGHT + "\n");
-				System.out.println("Usage:  mkpass [-l <length>] [-p]");
-				System.out.println("  -l [len]  Length. Set password length. Default: 30 characters");
-				System.out.println("  -p        Plain.  Do not include special characters");
-				System.out.println("  -n [num]  Number. Generate num passwords");
-				System.out.println("  -s        Show.   Display the symbols included in the password");
-				System.out.println("  -D        Debug.  Used by dev to debug program");
-				System.out.println("\nNote: If mkpass seems to hang, install 'rng-tools'\n");
+				Help.Display(VERSION, COPYRIGHT);
 				System.exit(0);
 				break;
 
@@ -120,7 +116,7 @@ public class Main {
 
 		// Generate and display the password
 		for (int i = 0; i < numberToGenerate; i++) {
-			String pw = generatePW(pwLen, useSpecialChars, showSymbols);
+			String pw = generatePW(pwLen, useSpecialChars, showSymbols, customSymbols);
 			System.out.println(pw);
 		}
 	}
@@ -132,7 +128,7 @@ public class Main {
 	 * @param useSpecialChars
 	 * @return
 	 */
-	public static String generatePW(int pwLen, boolean useSpecialChars, boolean showSymbols) {
+	public static String generatePW(int pwLen, boolean useSpecialChars, boolean showSymbols, String customSymb) {
 		Random random = null;
 
 		String[] standardSymbols = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
@@ -140,6 +136,11 @@ public class Main {
 				"R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
 		String[] specialSymbols = { "!", "@", "#", "$", "%", "^", "&", "*", "~", "-", "+", "_", "=" };
 		String[] pwSymbols;
+
+		// If custom symbols were entered, use those instead of the built in ones defined above
+		if (!customSymb.isEmpty()) {
+			specialSymbols = customSymb.split("");
+		}
 
 		// Determine if we are building with special characters and build symbol array we'll use.
 		if (useSpecialChars == true) {
