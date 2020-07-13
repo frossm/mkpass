@@ -10,9 +10,9 @@ public class Help{
 		System.out.println("Usage:  mkpass [-l <length>] [-p] [-n <number>] [-s] [-D]");
 		System.out.println("  -l [len]    Length: Set password length. Default: 30 characters");
 		System.out.println("  -p          Plain:  Do not include special characters");
-		System.out.println("  -c [chars]  Custom: Use these symbols instead of standard ones");
+		System.out.println("  -c [chars]  Custom: Use these special characters instead of the standard ones");
 		System.out.println("  -n [num]    Number: Generate num passwords");
-		System.out.println("  -s          Show:   Display the symbols included in the password");
+		System.out.println("  -s          Show:   Display the list of symbols used");
 		System.out.println("  -D          Debug:  Used by dev to debug program");
 		System.out.println("  -h | -?     Help:  Show this help information");
 		

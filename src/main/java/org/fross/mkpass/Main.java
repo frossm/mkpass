@@ -160,6 +160,7 @@ public class Main {
 			System.out.println("1234567890123456789012345678901234567890123456789012345678901234567890");
 		}
 
+		// Show the symbols that will be used to generate the password if desired
 		if (showSymbols == true) {
 			System.out.print("These " + pwSymbols.length + " symbols used in this password generation:");
 			for (int j = 0; j < pwSymbols.length; j++) {
@@ -173,7 +174,8 @@ public class Main {
 		try {
 			random = SecureRandom.getInstanceStrong();    // as of JDK 8, this should return the strongest algorithm available to the JVM
 		} catch (Exception ex) {
-			System.out.println("ERROR:  Issue getting random PW from SecureRandom\n" + ex.getMessage());
+			System.out.println("FATAL ERROR:  Issue getting random PW from Java's SecureRandom\n" + ex.getMessage());
+			System.exit(10);
 		}
 
 		// Loop through the number of password characters and get a random item from the symbol list
@@ -184,6 +186,6 @@ public class Main {
 		}
 
 		return (sb.toString());
-	} // END METHOD
+	} // END GENERATEPW() METHOD
 
-} // END CLASS
+} // END MAIN CLASS
