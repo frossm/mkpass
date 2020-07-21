@@ -7,7 +7,7 @@ public class Help{
 		System.out.println("Version " + ver);
 		System.out.println(copyright + "\n");
 		
-		System.out.println("Usage:  mkpass [-l <length>] [-p] [-n <number>] [-s] [-D]");
+		System.out.println("Usage:  java -jar mkpass.jar");
 		System.out.println("  -l [len]    Length: Set password length. Default: 30 characters");
 		System.out.println("  -p          Plain:  Do not include special characters");
 		System.out.println("  -c [chars]  Custom: Use these special characters instead of the standard ones");
@@ -16,6 +16,8 @@ public class Help{
 		System.out.println("  -D          Debug:  Used by dev to debug program");
 		System.out.println("  -h | -?     Help:  Show this help information");
 		
-		System.out.println("\nNote: If mkpass seems to hang, install 'rng-tools'\n");
+		System.out.println("\nNote:\nThere is a known issue where /dev/random blocks until");
+		System.out.println("it has enough entropy to produce a secure random number.");
+		System.out.println("Install 'rng-tools' to work around this issue.\n");
 	}
 }
