@@ -1,29 +1,35 @@
 ## mkpass
 
-mkpass is a simple command line utility to generate secure random passwords.  You can easily redirect these to a clipboard or copy and paste when needed.
+mkpass is a simple command line utility to generate secure random passwords.  You can easily redirect these to a clipboard or copy and paste as needed.
+
 I use a password manager and generate random passwords everytime I need one.  And while most password managers include a generator, there are times I need one outside of that.
-The code is written in java so should run on any OS that supports it.
-Lastly, the idea and core code came from a Wikipedia article.  I just took this and expanded upon it.
+
+The code is written in java so it should run on any OS that supports it.  Lastly, the idea and core code came from a Wikipedia article.  I just took this and expanded upon it.
+
 [https://en.wikipedia.org/wiki/Random_password_generator](https://en.wikipedia.org/wiki/Random_password_generator)
 
 ## Defaults
-By default, mkpass will create a 30 character password and will use special characters.
+By default, mkpass will create a 30 character password and will use the following special characters
+
+`! @ # $ % ^ & * ~ - + _ =`
 
 ## Command line Options
-|Option|Description  |
+|Option|Description|
 |--|--|
-|-l <len>|Length of generated password.  Default is 30|
-|-p|Use a plain password without special characters|
-|-c <chars>|Use these characters instead of the default symbols.  Useful if password only allows certain characters|
-|-n <num>|Number of passwords to generate|
+|-l <len>|Set the length of the generated password.  The default is 30 characters|
+|-p|Use a plain password without any special characters|
+|-c <chars>|Use these characters instead of the default special symbols.  Useful if password only allows certain characters|
+|-n <num>|Generate <num> passwords|
 |-s|Show the characters that will be used in the password generation|
 |-? or -h| Show Usage information|
-|-D|Debug mode.  Mostly used by me to show extra debugging information|
+|-D|Debug mode.  Mostly used by the developer to show extra debugging information|
 
 ## Linux Note
-I had an issue with my Ubuntu notebook where SecureRandom would hang.  Apparently this is a known issue where /dev/random blocks until it has enough entropy to produce a secure random number.
+I had an issue with my Ubuntu notebook where SecureRandom would hang.  Apparently this is a known issue where /dev/random blocks until it has enough entropy to produce a secure random number.  The solution is documented at the link below.
 
-**Codes and Notes** does a much better job explaning it [here](https://www.codesandnotes.be/2018/09/18/strong-random-number-generation-hangs-on-linux-machines/). It boils down to installing "rng-tools" which will feed entropy.
+**Codes and Notes** explains the situation [here](https://www.codesandnotes.be/2018/09/18/strong-random-number-generation-hangs-on-linux-machines/). It boils down to installing "rng-tools" which will feed entropy into the system.
+
+`sudo apt install rng-tools`
 
 Additional information can be found on in the [Oracle docs.](https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmrand.html)
 
