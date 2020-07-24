@@ -1,3 +1,7 @@
+<p align="center"> <img width="120" height = "120" src ="https://github.com/frossm/mkpass/blob/master/graphics/PostIt-512.png"> </p> 
+
+## INTRODUCTION
+
 ## mkpass
 
 mkpass is a simple command line utility to generate secure random passwords.  You can easily redirect these to a clipboard or copy and paste as needed.
