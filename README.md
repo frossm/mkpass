@@ -1,4 +1,4 @@
-<p align="center"> <img width="120" height = "120" src ="https://github.com/frossm/mkpass/blob/master/graphics/PostIt-512.png"> </p> 
+<p align="center"> <img width="80%" src ="https://github.com/frossm/mkpass/blob/master/graphics/Banner720x240.png"> </p> 
 
 ## INTRODUCTION
 
