@@ -45,7 +45,7 @@ public class Help{
 		System.out.println("  -D          Debug:  Used by dev to debug program");
 		System.out.println("  -h | -?     Help:  Show this help information");
 		
-		System.out.println("\nNote:\nThere is a known issue where /dev/random blocks until");
+		System.out.println("\nNote:\nThere is a known Linux issue where /dev/random blocks until");
 		System.out.println("it has enough entropy to produce a secure random number.");
 		System.out.println("Install 'rng-tools' to work around this issue.\n");
 	}

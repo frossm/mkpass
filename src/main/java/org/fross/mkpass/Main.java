@@ -61,7 +61,7 @@ public class Main {
 		boolean useSpecialChars = true;
 		boolean showSymbols = false;
 		int numberToGenerate = 1;
-		String customSymbols = "";
+		String customSymbols = null;
 
 		// Process application level properties file
 		// Update properties from Maven at build time:
@@ -131,6 +131,13 @@ public class Main {
 				System.exit(0);
 				break;
 			}
+		}
+
+		// If custom characters are entered and -p (plain) password is selected, show a warning
+		if (customSymbols != null && useSpecialChars == false) {
+			System.out.println("\n+----------------------------------------------------------------------+");
+			System.out.println("WARNING: -p and -c are not compatible. Custom characters will be ignored");
+			System.out.println("+----------------------------------------------------------------------+\n");
 		}
 
 		// Generate and display the password
