@@ -13,16 +13,22 @@ The code is written in java so it should run on any OS that supports it.  Lastly
 [https://en.wikipedia.org/wiki/Random_password_generator](https://en.wikipedia.org/wiki/Random_password_generator)
 
 ## Defaults
-By default, mkpass will create a 30 character password and will use the following special characters
-
-`! @ # $ % ^ & * ~ - + _ =`
+By default, mkpass will create a 30 character password using the following numbers, letters, and symnbols.  This can be modified via the command line options.
+- `0 1 2 3 4 5 6 7 8 9`
+- `a b c d e f g h i j`
+- `k l m n o p q r s t`
+- `u v w x y z A B C D`
+- `E F G H I J K L M N`
+- `O P Q R S T U V W X`
+- `Y Z ! @ # $ % ^ & *`
+- `~ - + _ =`
 
 ## Command line Options
 |Option|Description|
 |--|--|
 |-l <len>|Set the length of the generated password.  The default is 30 characters|
-|-p|Use a plain password without any special characters|
-|-c <chars>|Use these characters instead of the default special symbols.  Useful if password only allows certain characters|
+|-p|Use a plain password without any special characters.  Therefore, the password would be only numbers and upper & lower case letters|
+|-c <chars>|Use these characters instead of the default special symbols.  Useful if password only allows certain special characters|
 |-n <num>|Generate <num> passwords|
 |-s|Show the characters that will be used in the password generation|
 |-? or -h| Show Usage information|
@@ -33,7 +39,7 @@ I had an issue with my Ubuntu notebook where SecureRandom would hang.  Apparentl
 
 **Codes and Notes** explains the situation [here](https://www.codesandnotes.be/2018/09/18/strong-random-number-generation-hangs-on-linux-machines/). It boils down to installing "rng-tools" which will feed entropy into the system.
 
-`sudo apt install rng-tools`
+For ubuntu based systems: `sudo apt install rng-tools`
 
 Additional information can be found on in the [Oracle docs.](https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmrand.html)
 
@@ -43,7 +49,7 @@ If you have ideas or issues, please let me know.  There is quite a bit more erro
 mkpass at fross dot org
 
 ## License
-[The MIT License](https://opensource.org/licenses/MIT)  [https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
+[The MIT License](https://opensource.org/licenses/MIT)
 
 Copyright 2019-2020 by Michael Fross
 
