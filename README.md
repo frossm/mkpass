@@ -43,6 +43,15 @@ For ubuntu based systems: `sudo apt install rng-tools`
 
 Additional information can be found on in the [Oracle docs.](https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmrand.html)
 
+## SNAP
+I would encourage anyone with a supported Linux platform to use snap.  See [Snapcraft Homepage](https://snapcraft.io) for more information. You can download, install, and keep the application up to date automatically by installing the snap via :
+
+`sudo snap install mkpass`  (Assuming snap is installed)
+
+This will install the application into a sandbox where it is separate from other applications.  I do want to look at packaging it via Flatpak as well, but my understanding is that Maven is not well supported.  However, I need to do more investigation.
+
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/mkpass)
+
 ## Feedback
 If you have ideas or issues, please let me know.  There is quite a bit more error checking that could probably be added.
 
