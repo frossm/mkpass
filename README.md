@@ -44,7 +44,11 @@ For ubuntu based systems: `sudo apt install rng-tools`
 Additional information can be found on in the [Oracle docs.](https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmrand.html)
 
 ## SNAP
-I would encourage anyone with a supported Linux platform to use snap.  See [Snapcraft Homepage](https://snapcraft.io) for more information. You can download, install, and keep the application up to date automatically by installing the snap via :
+
+[![mkpass](https://snapcraft.io//mkpass/badge.svg)](https://snapcraft.io/mkpass)
+
+I would encourage anyone with a supported Linux platform to use snap.  See [Snapcraft Homepage](https://snapcraft.io) for more information. You can download, install, and keep the application up to date automatically by installi
+ng the snap via :
 
 `sudo snap install mkpass`  (Assuming snap is installed)
 
