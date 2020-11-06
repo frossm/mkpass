@@ -20,5 +20,5 @@ parts:
   mkpqss:
     plugin: maven
     source: https://github.com/frossm/mkpass.git
-    source-tag: master
+    source-branch: master
     source-type: git
