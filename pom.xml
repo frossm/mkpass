@@ -56,6 +56,7 @@
 				</configuration>
 			</plugin>
 
+			<!-- Build single executable "Fat Jar" with all dependencies added -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
@@ -97,6 +98,30 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			
+			<!-- Update snapcraft.yaml file to set the program and library version -->
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<version>1.5.3</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<file>snap/snapcraft.yaml</file>
+					<replacements>
+						<replacement>
+							<token>version:.*</token>
+							<value>version: '${project.version}'</value>
+						</replacement>
+					</replacements>
+				</configuration>
 			</plugin>
 
 		</plugins>
