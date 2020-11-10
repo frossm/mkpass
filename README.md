@@ -13,7 +13,7 @@ The code is written in java so it should run on any OS that supports it.  Lastly
 [https://en.wikipedia.org/wiki/Random_password_generator](https://en.wikipedia.org/wiki/Random_password_generator)
 
 ## Defaults
-By default, mkpass will create a 30 character password using the following numbers, letters, and symnbols.  This can be modified via the command line options.
+By default, mkpass will create a 30 character password using the following numbers, letters, and symbols.  This can be modified via the command line options.
 - `0 1 2 3 4 5 6 7 8 9`
 - `a b c d e f g h i j`
 - `k l m n o p q r s t`
@@ -26,10 +26,10 @@ By default, mkpass will create a 30 character password using the following numbe
 ## Command line Options
 |Option|Description|
 |--|--|
-|-l <len>|Set the length of the generated password.  The default is 30 characters|
+|-l length|Set the length of the generated password.  The default is 30 characters|
 |-p|Use a plain password without any special characters.  Therefore, the password would be only numbers and upper & lower case letters|
-|-c <chars>|Use these characters instead of the default special symbols.  Useful if password only allows certain special characters|
-|-n <num>|Generate <num> passwords|
+|-c chars|Use these characters instead of the default special symbols.  Useful if password only allows certain special characters|
+|-n number|Generate <num> passwords|
 |-s|Show the characters that will be used in the password generation|
 |-? or -h| Show Usage information|
 |-D|Debug mode.  Mostly used by the developer to show extra debugging information|
