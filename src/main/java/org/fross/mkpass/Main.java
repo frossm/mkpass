@@ -61,7 +61,7 @@ public class Main {
 		boolean useSpecialChars = true;
 		boolean showSymbols = false;
 		int numberToGenerate = 1;
-		String customSymbols = null;
+		String customSymbols = "";
 
 		// Process application level properties file
 		// Update properties from Maven at build time:
