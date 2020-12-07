@@ -35,6 +35,7 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Properties;
 import java.util.Random;
+
 import gnu.getopt.Getopt;
 
 /**
@@ -80,7 +81,7 @@ public class Main {
 		}
 
 		// Process Command Line Options and set flags where needed
-		Getopt optG = new Getopt("mkpass", args, "Dl:n:pshc:?");
+		Getopt optG = new Getopt("mkpass", args, "Dl:n:psvhc:?");
 		while ((optionEntry = optG.getopt()) != -1) {
 			switch (optionEntry) {
 			case 'D':
@@ -117,6 +118,11 @@ public class Main {
 
 			case 'c':
 				customSymbols = optG.getOptarg();
+				break;
+
+			case 'v':
+				System.out.println("Current mkpass version: " + VERSION);
+				System.exit(0);
 				break;
 
 			case '?': // Help
