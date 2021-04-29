@@ -140,7 +140,7 @@ public class Main {
 		}
 
 		// If custom characters are entered and -p (plain) password is selected, show a warning
-		if (customSymbols != null && useSpecialChars == false) {
+		if (customSymbols.isBlank() == false && useSpecialChars == false) {
 			System.out.println("\n+----------------------------------------------------------------------+");
 			System.out.println("WARNING: -p and -c are not compatible. Custom characters will be ignored");
 			System.out.println("+----------------------------------------------------------------------+\n");
