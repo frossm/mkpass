@@ -144,6 +144,7 @@ public class Main {
 			System.out.println("\n+----------------------------------------------------------------------+");
 			System.out.println("WARNING: -p and -c are not compatible. Custom characters will be ignored");
 			System.out.println("+----------------------------------------------------------------------+\n");
+			customSymbols = "";
 		}
 
 		// Generate and display the password
@@ -173,7 +174,7 @@ public class Main {
 		if (!customSymb.isEmpty()) {
 			specialSymbols = customSymb.split("");
 		}
-
+		
 		// Determine if we are building with special characters and build symbol array we'll use.
 		if (useSpecialChars == true) {
 			// Concatenate the two string arrays
@@ -218,6 +219,6 @@ public class Main {
 		}
 
 		return (sb.toString());
-	} // END GENERATEPW() METHOD
+	}
 
 } // END MAIN CLASS
