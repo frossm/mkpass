@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.fross</groupId>
 	<artifactId>mkpass</artifactId>
-	<version>2.0.4</version>
+	<version>2.0.5</version>
 
 	<name>mkpass</name>
 	<description>Command line password generator</description>
@@ -80,7 +80,8 @@
 				</executions>
 			</plugin>
 
-			<!-- Rename the jar-with-dependencies output to one simply called the <ProjectName>.jar -->
+			<!-- Rename the jar-with-dependencies output to one simply called the 
+				<ProjectName>.jar -->
 			<plugin>
 				<groupId>com.coderplus.maven.plugins</groupId>
 				<artifactId>copy-rename-maven-plugin</artifactId>
@@ -122,29 +123,6 @@
 						</replacement>
 					</replacements>
 				</configuration>
-			</plugin>
-			
-			<!-- Run the GenChecksums.py file to create the MD5, SHA1, and SHA256 checksum files -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.6.0</version>
-				<executions>
-					<execution>
-						<configuration>
-							<executable>python</executable>
-							<workingDirectory>${basedir}</workingDirectory>
-							<arguments>
-								<argument>${basedir}/tools/GenChecksums.py</argument>
-							</arguments>
-						</configuration>
-						<id>python_build</id>
-						<phase>package</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 
 		</plugins>
