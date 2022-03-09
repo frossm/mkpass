@@ -1,5 +1,5 @@
 name: mkpass
-version: '2.0.6'
+version: '2.0.7'
 summary: Simple secure password generator
 description: |
   MKPASS is a command line password generator.  There are several options
@@ -25,3 +25,6 @@ parts:
     source: https://github.com/frossm/mkpass.git
     source-branch: master
     source-type: git
+    override-prime: |
+      snapcraftctl prime
+      rm -vf usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs
