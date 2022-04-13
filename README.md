@@ -1,10 +1,10 @@
-<p align="center"> <img width="80%" src ="https://github.com/frossm/mkpass/blob/master/graphics/ScreenShot.jpg"> </p> 
+<p align="center"> <img width="80%" src ="https://github.com/frossm/mkpass/raw/master/graphics/ScreenShot.jpg"> </p> 
 
 ## INTRODUCTION
 
 ## mkpass
 
-<img align="right" width="200" src="https://github.com/frossm/mkpass/blob/master/graphics/PostIt-512.png">mkpass is a simple command line utility to generate secure random passwords.  You can easily redirect these to a clipboard or copy and paste as needed.
+<img align="right" width="200" src="https://github.com/frossm/mkpass/raw/master/graphics/PostIt-512.png">mkpass is a simple command line utility to generate secure random passwords.  You can easily redirect these to a clipboard or copy and paste as needed.
 
 I use a password manager and generate random passwords everytime I need one.  And while most password managers include a generator, there are times I need one outside of that.
 
