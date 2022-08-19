@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.fross</groupId>
 	<artifactId>mkpass</artifactId>
-	<version>2.0.8</version>
+	<version>2.0.9</version>
 
 	<name>mkpass</name>
 	<description>Command line password generator</description>
@@ -36,8 +36,6 @@
 	</properties>
 
 	<build>
-		<sourceDirectory>src</sourceDirectory>
-
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -47,58 +45,83 @@
 
 		<plugins>
 			<plugin>
+				<!-- ========================================================================================== -->
+				<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin          -->
+				<!-- ========================================================================================== -->
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
+				<version>3.10.1</version>
 				<configuration>
 					<release>${maven.compiler.release}</release>
 				</configuration>
 			</plugin>
 
-			<!-- Build single executable "Fat Jar" with all dependencies added -->
+			<!-- ========================================================================================== -->
+			<!-- Build single executable "FatJar" with all dependencies included using Apache Shade         -->
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin             -->
+			<!-- ========================================================================================== -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.3.0</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
 						<goals>
-							<goal>single</goal>
+							<goal>shade</goal>
 						</goals>
 						<configuration>
-							<archive>
-								<manifest>
-									<mainClass>org.fross.${project.name}.Main</mainClass>
-								</manifest>
-							</archive>
-							<descriptorRefs>
-								<descriptorRef>jar-with-dependencies</descriptorRef>
-							</descriptorRefs>
+							<finalName>${project.name}</finalName>
+							<createDependencyReducedPom>false</createDependencyReducedPom>
+							<filters>
+								<filter>
+									<artifact>*:*</artifact>
+									<excludes>
+										<exclude>org.junit.jupiter:junit-jupiter</exclude>
+										<exclude>META-INF/MANIFEST.MF</exclude>
+										<exclude>META-INF/*.SF</exclude>
+										<exclude>META-INF/*.DSA</exclude>
+										<exclude>META-INF/*.RSA</exclude>
+									</excludes>
+								</filter>
+							</filters>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<manifestEntries>
+										<Main-Class>org.fross.${project.name}.Main</Main-Class>
+									</manifestEntries>
+								</transformer>
+							</transformers>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 
-			<!-- Move the jar with dependencies output to one simply called the <ProjectName>.jar -->
+			<!-- ========================================================================================== -->
+			<!-- Set a pom property to the version numbers of the defined dependencies                      -->
+			<!-- https://mvnrepository.com/artifact/io.reformanda.semper/dependencyversion-maven-plugin     -->
+			<!--                                                                                            -->
+			<!-- Reference: https://gitlab.com/josh-cain/dependencyversion-maven-plugin                     -->
+			<!-- Example: The library dependency version reference is: ${org.fross:library:jar.version}     -->
+			<!-- ========================================================================================== -->
 			<plugin>
-				<groupId>com.coderplus.maven.plugins</groupId>
-				<artifactId>copy-rename-maven-plugin</artifactId>
+				<groupId>io.reformanda.semper</groupId>
+				<artifactId>dependencyversion-maven-plugin</artifactId>
 				<version>1.0.1</version>
 				<executions>
 					<execution>
-						<id>rename-file</id>
-						<phase>package</phase>
+						<id>set-all</id>
 						<goals>
-							<goal>rename</goal>
+							<goal>set-version</goal>
 						</goals>
-						<configuration>
-							<sourceFile>${basedir}/target/${project.artifactId}-${project.version}-jar-with-dependencies.jar</sourceFile>
-							<destinationFile>${basedir}/target/${project.artifactId}.jar</destinationFile>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 
-			<!-- Update snapcraft.yaml file to set the program and library version -->
+			<!-- ============================================================================================== -->
+			<!-- Update snapcraft.yaml file to set the program and library versions                             -->
+			<!-- https://mvnrepository.com/artifact/com.google.code.maven-replacer-plugin/maven-replacer-plugin -->
+			<!-- ============================================================================================== -->
 			<plugin>
 				<groupId>com.google.code.maven-replacer-plugin</groupId>
 				<artifactId>replacer</artifactId>
@@ -117,6 +140,10 @@
 						<replacement>
 							<token>version:.*</token>
 							<value>version: '${project.version}'</value>
+						</replacement>
+						<replacement>
+							<token>source-tag:.*</token>
+							<value>source-tag: 'v${org.fross:library:jar.version}'</value>
 						</replacement>
 					</replacements>
 				</configuration>
