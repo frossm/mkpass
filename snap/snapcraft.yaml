@@ -1,5 +1,5 @@
 name: mkpass
-version: '2.0.9'
+version: '2.1.0'
 summary: Simple secure password generator
 description: |
   MKPASS is a command line password generator.  There are several options
